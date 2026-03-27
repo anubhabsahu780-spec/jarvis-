@@ -7,7 +7,7 @@ function createWindow() {
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    frame: false,           // Custom titlebar
+    frame: false,           
     transparent: false,
     backgroundColor: '#050d1a',
     icon: path.join(__dirname, 'assets', 'icon.png'),
@@ -21,14 +21,14 @@ function createWindow() {
 
   win.loadFile('index.html')
 
-  // Open external links in the user's browser, not Electron
+
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url)
     return { action: 'deny' }
   })
 }
 
-// Window control handlers (for custom titlebar buttons)
+
 ipcMain.on('window-minimize', (e) => {
   BrowserWindow.fromWebContents(e.sender).minimize()
 })
